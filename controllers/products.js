@@ -1,6 +1,7 @@
 import express from "express";
 import Product from "../models/product.model.js";
 
+// Get all products
 export const getProducts = (req, res) => {
   Product.find().then((products) => {
     res.send(products);
@@ -9,6 +10,7 @@ export const getProducts = (req, res) => {
   });
 };
 
+// Create a new product
 export const createProduct = async(req, res) => {
   const { name, description, price, image } = req.body;
   const product = new Product({ name, description, price, image });
@@ -19,6 +21,7 @@ export const createProduct = async(req, res) => {
   });
 };
 
+// Get a product by ID
 export const getProductById = async (req, res) => {
   const { id } = req.params;
   Product.findById(id).then((product) => {
@@ -28,6 +31,7 @@ export const getProductById = async (req, res) => {
   });
 };
 
+// Update a product
 export const updateProduct = async (req, res) => {
   const { id } = req.params;
   const { name, description, price, image } = req.body;
@@ -38,6 +42,7 @@ export const updateProduct = async (req, res) => {
   });
 };
 
+// Delete a product
 export const deleteProduct = async (req, res) => {
   const { id } = req.params;
   Product.findByIdAndDelete(id).then(() => {
