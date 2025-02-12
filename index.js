@@ -12,6 +12,7 @@ const app = express();
 
 // Use body-parser middleware
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Define a route handler for the default home page
 app.get("/", (req, res) => {
